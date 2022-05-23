@@ -30,6 +30,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware'=>['auth','admin']],function(){
     Route::resource('teacher', TeacherController::class);
 });
+
+
+Route::group(['middleware'=>['auth','teacher']],function(){
+
 Route::resource('appointment', AppointmentController::class);
 
+Route::post('appointment/check', [AppointmentController::class, 'check'])->name('appointment.check');
+Route::post('appointment/update', [AppointmentController::class, 'updateTime'])->name('update');
 
+});

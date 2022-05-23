@@ -41,7 +41,7 @@
     @endforeach
 
 
-    <form action="" method="post">@csrf
+    <form action="{{route('appointment.store')}}" method="post">@csrf
 
         <div class="card">
             <div class="card-header">

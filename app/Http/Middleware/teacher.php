@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class teacher
 {
@@ -16,6 +17,11 @@ class teacher
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if(Auth::user()->role->name=="teacher"){
+            return $next($request);
+          }else{
+              return redirect()->back();
+          }
+        // return $next($request);
     }
 }
