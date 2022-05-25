@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -16,12 +18,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
+
+Route::get('/dashboard',[DashboardController::class,'index']);
+
+Route::get('/',[FrontendController::class,'index']);
+Route::get('/new-appointment/{teacherId}/{date}',[FrontendController::class,'show'])->name('create.appointment');
 
 Auth::routes();
 
