@@ -41,7 +41,7 @@ class FrontendController extends Controller
     public function store(Request $request){
 
         date_default_timezone_set('Asia/Dhaka');
-        
+
         $check = $this->checkBookingTimeInterval();
         if($check){
             return redirect()->back()->with('errmessage','You have already booked in an appointment.Please wait to make next appointment');
@@ -71,5 +71,16 @@ class FrontendController extends Controller
     public function myBooking(){
         $appointments = Booking::latest('user_id',auth()->user()->id)->get();
         return view('booking.index',compact('appointments'));
+    }
+
+    public function TeacherToady(Request $request){
+        $teachers = Appointment::with('teacher')->whereDate('date',date('Y-m-d'))->get();
+        return $teachers;
+    }
+
+    public function FindTeacher(Request $request){
+        $teachers = Appointment::with('teacher')->whereDate('date',$request->date)->get();
+        return $teachers;
+
     }
 }

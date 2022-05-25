@@ -3,7 +3,9 @@
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,12 +32,23 @@ Route::get('/dashboard',[DashboardController::class,'index']);
 Route::get('/',[FrontendController::class,'index']);
 Route::get('/new-appointment/{teacherId}/{date}',[FrontendController::class,'show'])->name('create.appointment');
 
-Route::post('/book/appointment',[FrontendController::class,'store'])->name('book.appointment')->middleware('auth');
-Route::get('/my-booking',[FrontendController::class,'myBooking'])->name('my.booking')->middleware('auth');
+
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+Route::group(['middleware'=>['auth','student']],function(){
+
+Route::post('/book/appointment',[FrontendController::class,'store'])->name('book.appointment');
+Route::get('/my-booking',[FrontendController::class,'myBooking'])->name('my.booking');
+Route::get('/user-profile',[ProfileController::class,'index']);
+Route::post('/profile',[ProfileController::class,'store'])->name('profile.store');
+Route::post('/profile-pic',[ProfileController::class,'ProfilePic'])->name('profile.pic');
+
+});
 
 Route::group(['middleware'=>['auth','admin']],function(){
     Route::resource('teacher', TeacherController::class);

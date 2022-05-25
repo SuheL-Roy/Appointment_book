@@ -23,7 +23,8 @@
         </div>
     </div>
     <hr>
-    <!-- <form action="{{url('/')}}" method="GET">
+    <section class="">
+     <form action="{{url('/')}}" method="GET">
         <div class="card">
             <div class="card-header">Find Teachers</div>
             <div class="card-body">
@@ -39,9 +40,9 @@
             </div>
 
         </div>
-        </form> -->
+        </form>
 
-    <!-- <div class="card mt-1">
+        <div class="card mt-1">
             <div class="card-header"> Teachers available today</div>
             <div class="card-body">
 
@@ -74,11 +75,8 @@
 
             </div>
 
-        </div> -->
-
-        <!-- date picker component -->
-
-        <find-teacher></find-teacher>
-
+        </div>
+</div>
+</section>
 </div>
 @endsection

@@ -45,7 +45,7 @@
                                     <option value="">please select department</option>
                                     <option value="CSE">CSE</option>
                                     <option value="EEE">EEE</option>
-                                    <option value="ECE">CSE</option>
+                                    <option value="ECE">CS</option>
                                     <option value="CE">CE</option>
                                     <option value="MCE">MCE</option>
                                     <option value="IP">IP</option>
