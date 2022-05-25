@@ -6,11 +6,11 @@
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="text-center">Doctor Information</h4>
+                    <h4 class="text-center">Teacher Information</h4>
                     <img src="{{asset('images')}}/{{$user->image}}" width="100px" style="border-radius: 50%;">
                     <br>
                     <p class="lead"> Name:{{ucfirst($user->name)}}</p>
-                    <p class="lead"> Degree:{{$user->education}}</p>
+                    <p class="lead"> Education:{{$user->education}}</p>
                     <p class="lead"> Specialist:{{$user->department}}</p>
                 </div>
 
@@ -35,7 +35,7 @@
             @endif
 
 
-            <form action="" method="post">@csrf
+            <form action="{{route('book.appointment')}}" method="post">@csrf
                 <div class="card">
                     <div class="card-header lead">{{$date}}</div>
                     <div class="card-body">
@@ -48,7 +48,7 @@
                                     </span>
                                 </label>
                             </div>
-                            
+                            <input type="hidden" name="teacherId" value="{{$teacher_id}}">
                             <input type="hidden" name="appointmentId" value="{{$time->appointment_id}}">
                             <input type="hidden" name="date" value="{{$date}}">
 

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Booking;
 use App\Models\Time;
 use App\Models\User;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -27,11 +29,47 @@ class FrontendController extends Controller
         $times = Time::where('appointment_id',$appointment->id)->where('status',0)->get();
         // return $times;
         $user = User::where('id',$teacherId)->first();
-        return view('appointment',compact('times','date','user'));
+        $teacher_id = $teacherId;
+        return view('appointment',compact('times','date','user','teacher_id'));
     }
 
     public function teacherBasedOnDate($date){
         $teacher = Appointment::where('date',$date)->get();
         return $teacher;
+    }
+
+    public function store(Request $request){
+
+        date_default_timezone_set('Asia/Dhaka');
+        
+        $check = $this->checkBookingTimeInterval();
+        if($check){
+            return redirect()->back()->with('errmessage','You have already booked in an appointment.Please wait to make next appointment');
+        }
+        $request->validate(['time'=>'required']);
+        Booking::create([
+          'user_id' => auth()->user()->id,
+          'teacher_id' => $request->teacherId,
+          'time' => $request->time,
+          'date' => $request->date,
+          'status'=> 0,
+        ]);
+       
+        Time::where('appointment_id',$request->appointmentId)
+        ->where('time',$request->time)->update(['status'=>1]);
+        return redirect()->back()->with('message','your appointment was booked');
+    }
+
+    public function checkBookingTimeInterval(){
+
+        return Booking::orderby('id','desc')
+        ->where('user_id',auth()->user()->id)
+        ->whereDate('created_at',date('Y-m-d'))
+        ->exists();
+    }
+
+    public function myBooking(){
+        $appointments = Booking::latest('user_id',auth()->user()->id)->get();
+        return view('booking.index',compact('appointments'));
     }
 }

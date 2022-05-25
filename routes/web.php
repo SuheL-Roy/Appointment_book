@@ -30,6 +30,9 @@ Route::get('/dashboard',[DashboardController::class,'index']);
 Route::get('/',[FrontendController::class,'index']);
 Route::get('/new-appointment/{teacherId}/{date}',[FrontendController::class,'show'])->name('create.appointment');
 
+Route::post('/book/appointment',[FrontendController::class,'store'])->name('book.appointment')->middleware('auth');
+Route::get('/my-booking',[FrontendController::class,'myBooking'])->name('my.booking')->middleware('auth');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
