@@ -4,6 +4,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
@@ -52,7 +53,11 @@ Route::post('/profile-pic',[ProfileController::class,'ProfilePic'])->name('profi
 
 Route::group(['middleware'=>['auth','admin']],function(){
     Route::resource('teacher', TeacherController::class);
+    Route::get('/student',[StudentController::class,'index'])->name('student');
+    Route::get('/student/all',[StudentController::class,'AllTimeAppointment'])->name('all.appointments');
+    Route::get('/status/update/{id}',[StudentController::class,'ToggleStatus'])->name('update.status');
 });
+
 
 
 Route::group(['middleware'=>['auth','teacher']],function(){
