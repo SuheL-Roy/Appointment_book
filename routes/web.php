@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
@@ -66,5 +67,9 @@ Route::resource('appointment', AppointmentController::class);
 
 Route::post('appointment/check', [AppointmentController::class, 'check'])->name('appointment.check');
 Route::post('appointment/update', [AppointmentController::class, 'updateTime'])->name('update');
+Route::get('student-today',[FeedbackController::class,'index'])->name('Student.today');
+Route::post('/feedback',[FeedbackController::class,'store'])->name('teacher.feedback');
+
+Route::get('/feedback/{userId}/{date}',[FeedbackController::class,'show'])->name('feedback.show');
 
 });

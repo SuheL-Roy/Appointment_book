@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="w-100 clearfix">
-        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2022 HunterCafe v2.0. All Rights Reserved.</span>
-        <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">Crafted with <i class="fa fa-heart text-danger"></i> by <a href="http://lavalite.org/" class="text-dark" target="_blank">HunterCafe</a></span>
+        <!-- <span class="text-center text-sm-left d-md-inline-block">Copyright © 2022 HunterCafe v2.0. All Rights Reserved.</span>
+        <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">Crafted with <i class="fa fa-heart text-danger"></i> by <a href="http://lavalite.org/" class="text-dark" target="_blank">HunterCafe</a></span> -->
     </div>
 </footer>
 
@@ -118,6 +118,7 @@
 <script src="{{asset('template/js/widgets.js')}}"></script>
 <script src="{{asset('template/js/charts.js')}}"></script>
 <script src="{{asset('template/dist/js/theme.min.js')}}"></script>
+
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script type="text/javascript">
             $(document).ready(function(){

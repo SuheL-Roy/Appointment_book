@@ -78,10 +78,11 @@ export default {
     components: {
         Datepicker,
         PulseLoader,
+        moment
     },
     data() {
         return {
-            time: "",
+            time:'',
             loading: false,
             teachers: [],
             disabledDates: {
@@ -106,11 +107,11 @@ export default {
                 });
         },
     },
-    mounted() {
-        
+    mounted() { 
         this.loading = true;
         axios.get("/api/teachers/today").then((response) => {
             this.teachers = response.data;
+            // console.log(response.data);
             this.loading = false;
         });
     },

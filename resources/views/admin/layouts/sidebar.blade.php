@@ -114,7 +114,7 @@
                             <div class="submenu-content">
                                 <a href="{{route('teacher.create')}}" class="menu-item">create</a>
                                 <a href="{{route('teacher.index')}}" class="menu-item">view</a>
-    
+
                             </div>
                         </div>
                         @endif
@@ -124,7 +124,17 @@
                             <div class="submenu-content">
                                 <a href="{{route('appointment.create')}}" class="menu-item">Create</a>
                                 <a href="{{route('appointment.index')}}" class="menu-item">Check</a>
-    
+
+                            </div>
+                        </div>
+                        @endif
+                        @if(auth()->check()&& auth()->user()->role->name === 'teacher')
+                        <div class="nav-item has-sub">
+                            <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Student Appointment</span> <span class="badge badge-danger"></span></a>
+                            <div class="submenu-content">
+                                <a href="{{route('Student.today')}}" class="menu-item">Student(Today)</a>
+                                <a href="{{route('appointment.index')}}" class="menu-item">All Student</a>
+
                             </div>
                         </div>
                         @endif
@@ -134,10 +144,17 @@
                             <div class="submenu-content">
                                 <a href="{{route('student')}}" class="menu-item">Today Appointment</a>
                                 <a href="{{route('all.appointments')}}" class="menu-item">All Time Appointment</a>
-    
+
                             </div>
                         </div>
                         @endif
+                        <div class="nav-item active">
+                            <a onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" href="{{ route('logout') }}"><i class="ik ik-power dropdown-icon"></i><span>Logout</span></a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
                         <!-- <div class="nav-lavel">UI Element</div>
                         <div class="nav-item has-sub">
                             <a href="#"><i class="ik ik-box"></i><span>Basic</span></a>

@@ -74,6 +74,7 @@ class FrontendController extends Controller
     }
 
     public function TeacherToady(Request $request){
+        date_default_timezone_set('Asia/Dhaka');
         $teachers = Appointment::with('teacher')->whereDate('date',date('Y-m-d'))->get();
         return $teachers;
     }
