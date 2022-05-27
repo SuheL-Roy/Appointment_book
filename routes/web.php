@@ -47,7 +47,7 @@ Route::group(['middleware'=>['auth','student']],function(){
 Route::post('/book/appointment',[FrontendController::class,'store'])->name('book.appointment');
 Route::get('/my-booking',[FrontendController::class,'myBooking'])->name('my.booking');
 Route::get('/user-profile',[ProfileController::class,'index']);
-Route::post('/profile',[ProfileController::class,'store'])->name('profile.store');
+Route::post('/profile-store',[ProfileController::class,'store'])->name('profile.store');
 Route::post('/profile-pic',[ProfileController::class,'ProfilePic'])->name('profile.pic');
 Route::get('/my-feedback',[FrontendController::class,'MyFeedback'])->name('my.feedback');
 

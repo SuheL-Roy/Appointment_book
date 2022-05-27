@@ -70,8 +70,9 @@ class FrontendController extends Controller
     }
 
     public function myBooking(){
-        $appointments = Booking::latest('user_id',auth()->user()->id)->get();
-        return view('booking.index',compact('appointments'));
+       $appointments = Booking::latest()->where('user_id',auth()->user()->id)->get();
+       //return $appointments;
+       return view('booking.index',compact('appointments'));
     }
 
     public function TeacherToady(Request $request){
