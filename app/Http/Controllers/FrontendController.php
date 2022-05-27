@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\Booking;
+use App\Models\Feedback;
 use App\Models\Time;
 use App\Models\User;
 use Illuminate\Auth\Events\Validated;
@@ -83,5 +84,10 @@ class FrontendController extends Controller
         $teachers = Appointment::with('teacher')->whereDate('date',$request->date)->get();
         return $teachers;
 
+    }
+
+    public function MyFeedback(){
+        $feedbacks = Feedback::where('user_id',auth()->user()->id)->get();
+        return view('my-feedback',compact('feedbacks'));
     }
 }

@@ -28,4 +28,10 @@ class FeedbackController extends Controller
       //return $feedback;
       return view('Feedback.show',compact('feedback'));
    }
+
+   public function StudentFromFeedbacked(){
+      $students = Feedback::get();
+     
+     return view('Feedback.all',compact('students'));
+   }
 }

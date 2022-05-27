@@ -12,7 +12,7 @@ namespace App\Models\Feedback;
                 @endif
                 <div class="card-header">
 
-                    Appointment ({{$bookings->count()}})
+                    Appointment ({{$students->count()}})
                 </div>
                 <div class="card-body">
                     <table class="table table-striped">
@@ -33,32 +33,28 @@ namespace App\Models\Feedback;
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($bookings as $key=>$booking)
+                            @forelse($students as $key=>$student)
                             <tr>
                                 <td scope="row">{{$key+1}}</td>
-                                <td><img src="/profile/{{$booking->user->image}}" width="80" style="border-radius: 50%;">
+                                <td><img src="/profile/{{$student->user->image}}" width="80" style="border-radius: 50%;">
                                 </td>
-                                <td>{{$booking->date}}</td>
-                                <td>{{$booking->user->name}}</td>
-                                <td>{{$booking->user->email}}</td>
-                                <!-- <td>{{$booking->user->phone_number}}</td> -->
-                                <td>{{$booking->user->std_department}}</td>
-                                <td>{{$booking->time}}</td>
-                                <td>{{$booking->teacher->name}}</td>
+                                <td>{{$student->date}}</td>
+                                <td>{{$student->user->name}}</td>
+                                <td>{{$student->user->email}}</td>
+                                <!-- <td>{{$student->user->phone_number}}</td> -->
+                                <td>{{$student->user->std_department}}</td>
+                                <td>{{$student->time}}</td>
+                                <td>{{$student->teacher->name}}</td>
                                 <td>
-                                    @if($booking->status==1)
+                                    @if($student->status==1)
                                     checked
                                     @endif
                                 </td>
                                 <td>
-                                    @if(!App\Models\Feedback::where('date',date('Y-m-d'))->where('teacher_id',auth()->user()->id)->where('user_id',$booking->user->id)->exists())
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$booking->user_id}}">
-                                        Write Feedback </button>
-                                    @include('Feedback.form');
-                                    @else
-                                    
-                                    <a href="{{route('feedbacked.show',[$booking->user_id,$booking->date])}}" class="btn btn-secondary">View Feedback</a>
-                                    @endif
+
+
+                                    <a href="{{route('feedbacked.show',[$student->user_id,$student->date])}}" class="btn btn-secondary">View Feedback</a>
+
                                 </td>
                             </tr>
                             @empty
@@ -72,5 +68,5 @@ namespace App\Models\Feedback;
         </div>
     </div>
 </div>
-<script src="{{asset('js/app.js')}}"defer></script>
+<script src="{{asset('js/app.js')}}" defer></script>
 @endsection

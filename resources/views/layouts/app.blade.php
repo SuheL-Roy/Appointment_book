@@ -50,6 +50,11 @@
                             <a class="nav-link" href="{{ route('my.booking') }}">{{ __('My Booking') }}</a>
                         </li>
                         @endif
+                        @if(auth()->check() && auth()->user()->role->name === 'student')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('my.feedback') }}">{{ __('My Feedback') }}</a>
+                        </li>
+                        @endif
                         <!-- Authentication Links -->
 
                         @guest

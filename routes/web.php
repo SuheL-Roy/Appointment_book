@@ -49,6 +49,7 @@ Route::get('/my-booking',[FrontendController::class,'myBooking'])->name('my.book
 Route::get('/user-profile',[ProfileController::class,'index']);
 Route::post('/profile',[ProfileController::class,'store'])->name('profile.store');
 Route::post('/profile-pic',[ProfileController::class,'ProfilePic'])->name('profile.pic');
+Route::get('/my-feedback',[FrontendController::class,'MyFeedback'])->name('my.feedback');
 
 });
 
@@ -70,6 +71,9 @@ Route::post('appointment/update', [AppointmentController::class, 'updateTime'])-
 Route::get('student-today',[FeedbackController::class,'index'])->name('Student.today');
 Route::post('/feedback',[FeedbackController::class,'store'])->name('teacher.feedback');
 
-Route::get('/feedback/{userId}/{date}',[FeedbackController::class,'show'])->name('feedback.show');
+Route::get('/feedback/{userId}/{date}',[FeedbackController::class,'show'])->name('feedbacked.show');
+
+Route::get('/feedbacked-students',[FeedbackController::class,'StudentFromFeedbacked'])->name('feedback.show');
+
 
 });

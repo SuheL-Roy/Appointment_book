@@ -133,7 +133,7 @@
                             <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Student Appointment</span> <span class="badge badge-danger"></span></a>
                             <div class="submenu-content">
                                 <a href="{{route('Student.today')}}" class="menu-item">Student(Today)</a>
-                                <a href="{{route('appointment.index')}}" class="menu-item">All Student</a>
+                                <a href="{{route('feedback.show')}}" class="menu-item">All Student</a>
 
                             </div>
                         </div>
