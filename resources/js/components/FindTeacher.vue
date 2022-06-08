@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="card">
-            <div class="card-header">Find Doctors</div>
+            <div class="card-header">Find teachers</div>
             <div class="card-body">
                 <Datepicker
                     class="my-datepicker"
@@ -15,7 +15,7 @@
             <!-- {{ teachers }} -->
             <!-- {{time}} -->
             <div class="card mt-5">
-                <div class="card-header">Doctors</div>
+                <div class="card-header">Teachers</div>
                 <div class="card-body">
                     <table class="table table-striped">
                         <thead>

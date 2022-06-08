@@ -14,12 +14,6 @@
                 consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                 proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-            <div class="mt-5">
-                <a href="{{url('/register')}}"> <button class="btn btn-success">Register as Patient</button></a>
-                <a href="{{url('/login')}}"><button class="btn btn-secondary">Login</button></a>
-                <!-- <a href=""> <button class="btn btn-success">Register as Student</button></a>
-                <a href=""><button class="btn btn-secondary">Login</button></a> -->
-            </div>
         </div>
     </div>
     <hr>
@@ -43,7 +37,7 @@
         </form>
 
         <div class="card mt-1">
-            <div class="card-header"> Teachers available today</div>
+            <div class="card-header">Teachers available today</div>
             <div class="card-body">
 
                 <table class="table table-striped">

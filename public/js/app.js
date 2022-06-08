@@ -2066,7 +2066,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Datepicker: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"],
-    PulseLoader: vue_spinner_src_PulseLoader_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    PulseLoader: vue_spinner_src_PulseLoader_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    moment: moment__WEBPACK_IMPORTED_MODULE_1___default.a
   },
   data: function data() {
     return {
@@ -60376,7 +60377,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-header" }, [_vm._v("Find Doctors")]),
+      _c("div", { staticClass: "card-header" }, [_vm._v("Find teachers")]),
       _vm._v(" "),
       _c(
         "div",
@@ -60403,7 +60404,7 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "card mt-5" }, [
-        _c("div", { staticClass: "card-header" }, [_vm._v("Doctors")]),
+        _c("div", { staticClass: "card-header" }, [_vm._v("Teachers")]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("table", { staticClass: "table table-striped" }, [
