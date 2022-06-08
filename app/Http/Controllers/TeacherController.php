@@ -152,7 +152,7 @@ class TeacherController extends Controller
     public function validateUpdate($request){
         return  $this->validate($request,[
             'name'=>'required',
-            'email'=>'required|unique:users',
+            // 'email'=>'required|unique:users',
             'std_department'=>'required',
             'education'=>'required',
             'address'=>'required',
